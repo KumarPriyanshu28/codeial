@@ -52,13 +52,13 @@ app.use(session({
         maxAge :(1000*60*100)
     },
     store: new MongoStore(
-    {
-        mongooseConnection :db,
-        autoRemove : 'disabled'
-    },
-    function (err){
-        console.log(err || 'connect-mongodb setup ok');
-    }
+        {
+            mongooseConnection :db,
+            autoRemove : 'disabled'
+        },
+        function (err){
+            console.log(err || 'connect-mongodb setup ok');
+        }
     )
 }));
 

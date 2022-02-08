@@ -5,8 +5,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
 // authentication using passport
-passport.use(
-    new LocalStrategy({
+passport.use(new LocalStrategy({
         usernameField: 'email'
     },
     function(email, password,done) {
@@ -17,12 +16,12 @@ passport.use(
                 console.log('Error in finding user --> Passport');
                 return done(err);
             }
-            if(!user || user.password!=password){
-                console.log('Incorrect password');
+            if(!user || user.password != password){
+                console.log('Invalid Username/Password');
                 return done(null,false);// false is used for unsuccessfull authentication and null is used for error
             }
             return done(null,user);
-        })
+        });
     }
 ));
 
