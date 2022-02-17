@@ -18,7 +18,7 @@ module.exports.home = function(req, res){
             title: "Codeial | Home",
             posts: posts
         });
-    });
+    })
 }
 
 // module.exports.actionName = function(req, res){}
