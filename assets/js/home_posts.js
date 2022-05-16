@@ -13,12 +13,12 @@
                 success: function(data){
                     let newPost = newPostDom(data.data.post);
                     $('#posts-list-container>ul').prepend(newPost);
-                    deletePost($(' .delete-post-button',newPost));
+                    deletePost($(' .delete-post-button', newPost));
 
                     // call the create comment class
                     new PostComments(data.data.post._id);
 
-                    //enable the functionality of the toggle like button on the new post
+                    // CHANGE :: enable the functionality of the toggle like button on the new post
                     new ToggleLike($(' .toggle-like-button', newPost));
 
                     new Noty({
@@ -29,7 +29,7 @@
                         timeout: 1500
                         
                     }).show();
-                    
+
                 }, error: function(error){
                     console.log(error.responseText);
                 }
@@ -40,7 +40,7 @@
 
     // method to create a post in DOM
     let newPostDom = function(post){
-        //show the count of zero likes on this post
+        // CHANGE :: show the count of zero likes on this post
         return $(`<li id="post-${post._id}">
                     <p>
                         
@@ -61,6 +61,7 @@
                                 </a>
                             
                         </small>
+
                     </p>
                     <div class="post-comments">
                         
@@ -86,7 +87,7 @@
     let deletePost = function(deleteLink){
         $(deleteLink).click(function(e){
             e.preventDefault();
-            
+
             $.ajax({
                 type: 'get',
                 url: $(deleteLink).prop('href'),
@@ -104,8 +105,13 @@
                     console.log(error.responseText);
                 }
             });
+
         });
     }
+
+
+
+
 
     // loop over all the existing posts on the page (when the window loads for the first time) and call the delete post method on delete link of each, also add AJAX (using the class we've created) to the delete button of each
     let convertPostsToAjax = function(){
