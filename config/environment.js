@@ -36,7 +36,8 @@ const development = {
 }
 
 const production = {
-    name: process.env.CODEIAL_ENVIRONMENT,
+    // name: process.env.CODEIAL_ENVIRONMENT,
+    name: 'production',
     asset_path: process.env.CODEIAL_ASSET_PATH,
     session_cookie_key: process.env.CODEIAL_SESSION_COOKIE_KEY,
     db: process.env.CODEIAL_DB,
@@ -61,3 +62,6 @@ const production = {
 }
 
 module.exports = eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT);
+// module.exports = development;
+// module.exports = production;
+// module.exports = process.env.CODEIAL_ENVIRONMENT == 'production' ? production : development;
